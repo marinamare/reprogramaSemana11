@@ -5,6 +5,33 @@
         "duration": "3:45",
         "launchYear": 2018,
         "favorited": true,
-        "artists": ["elza soares", "edgar"]
+        "single": false,
+        "artists": [
+            "elza soares",
+            "edgar"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "canto da revolução",
+        "duration": "2:09",
+        "launchYear": 2017,
+        "favorited": true,
+        "single": false,
+        "artists": [
+            "doralyce",
+            "dudu souto",
+            "pedro amparo",
+            "monica avila"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Ashley Banks",
+        "duration": "3:28",
+        "launchYear": 2019,
+        "favorited": true,
+        "single": true,
+        "artists": "cristal"
     }
 ]
