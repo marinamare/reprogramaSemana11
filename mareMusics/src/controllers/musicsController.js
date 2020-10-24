@@ -2,8 +2,19 @@ const musics = require("../models/musics.json");
 const fs = require("fs");
 
 const getAllMusics = (req, res) => {
-  console.log(req.url);
+  console.log(req.query);
+  const artist = req.query.artists
+  const musicsLaunchYear = req.query.launchYear
+
+  if(artist) {
+    const musicsByArtist = musics.filter(musics => musics.artists.includes(artist));
+    res.status(200).send(musicsByArtist);
+  } else {
   res.status(200).send(musics);
+  };
+
+
+
 };
 
 const getMusicById = (req, res) => {
@@ -56,9 +67,9 @@ const updateMusic = (req, res) => {
             res.status(404).send({ message: "Erro: música a ser atualizada não encontrada" })
         }
 
-        fs.writeFile("./src/models/musics.json", JSON.stringify(musics), 'utf8', function (err) { // gravo meu json de filmes atualizado
+        fs.writeFile("./src/models/musics.json", JSON.stringify(musics), 'utf8', function (err) { 
             if (err) {
-                res.status(500).send({ message: err }) // caso dê erro retorno status 500
+                res.status(500).send({ message: err }) 
             } else {
                 console.log(`Arquivo de música ${musicId} atualizado com sucesso!`)
                 const musicUpdated = musics.find(music => music.id == musicId);
@@ -91,6 +102,31 @@ const updateFavoritedStatus = (req, res) => {
     });
 };
 
+const deleteMusic = (req, res) => {
+  try {
+    const musicId = req.params.id;
+    const musicFound = musics.find(music => music.id == musicId);
+    const musicIndex = musics.indexOf(musicFound); 
+
+    if (musicIndex >= 0) {
+      musics.splice(musicIndex, 1);
+    } else {
+      res.status(404).send({ message: "Música não foi encontrada para ser deletada!"});
+    }
+
+    fs.writeFile("./src/models/musics.json", JSON.stringify(musics), "utf8", function(err){
+      if(err){
+        res.status(500).send({ message: err });
+      } else {
+        console.log("Música deletada com sucesso do arquivo!")
+        res.sendStatus(204);
+      }
+    })
+  } catch(err) {
+    console.log(err)
+    res.status(500).send({ message: "Erro ao deletar a música"})
+  }
+}
 
 module.exports = {
   getAllMusics,
@@ -98,4 +134,5 @@ module.exports = {
   postMusic,
   updateMusic,
   updateFavoritedStatus,
+  deleteMusic,
 };

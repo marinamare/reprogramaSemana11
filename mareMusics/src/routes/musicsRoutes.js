@@ -9,5 +9,6 @@ router.get("/:id", controller.getMusicById);
 router.post("/", controller.postMusic);
 router.put("/:id", controller.updateMusic);
 router.patch("/:id/favorited", controller.updateFavoritedStatus);
+router.delete("/:id", controller.deleteMusic); 
 
 module.exports = router; 
