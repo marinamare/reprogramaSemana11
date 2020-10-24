@@ -10,8 +10,8 @@ Desenvolver um sistema de registro de músicas, aplicando os aprendizados sobre 
 
 #### Funcionalidades implementadas :book: 
 
-- [x] Possibilidade de **vizualização de todas as músicas cadastrados** através da rota "http://localhost:8080/musics/";
-- [x] Filtro de **visualização de músicas por id** através da rota "http://localhost:8080/musics/id", substituindo a palavra *id* pelo número de identificação do livro desejado; 
+- [x] Possibilidade de **vizualização de todas as músicas cadastrados** através da rota "http://localhost:3000/musics/";
+- [x] Filtro de **visualização de músicas por id** através da rota "http://localhost:3000/musics/id", substituindo a palavra *id* pelo número de identificação do livro desejado; 
 - [x] Filtro que permite a visualização de **músicas por artista**; 
 - [x] Função de adição de nova música operando com auxílio do método http **POST**; 
 - [x] Método http **DELETE** integrado à API, possibilitando a exclusão de músicas registradas, tomando como parâmetro seu ID; 
